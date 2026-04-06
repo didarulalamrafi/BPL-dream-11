@@ -2,20 +2,26 @@ import React from "react";
 import { FaFlag, FaUser } from "react-icons/fa";
 
 const AvailablePlayers = ({ PlayersData }) => {
-  console.log(PlayersData);
-  
+  // console.log(PlayersData);
+
   return (
     <div className=" grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      {PlayersData.map((player, index) => { 
-        const {playerName, playerCountry, playerType, rating, battingStyle, bowlingStyle, price, playerImage} = player;
+      {PlayersData.map((player, index) => {
+        const {
+          playerName,
+          playerCountry,
+          playerType,
+          rating,
+          battingStyle,
+          bowlingStyle,
+          price,
+          playerImage,
+        } = player;
         return (
           <div key={index} className="container mx-auto border-2 rounded-xl">
             <div className="card bg-base-100 shadow-sm">
               <figure>
-                <img
-                  src={playerImage}
-                  alt="Shoes"
-                />
+                <img src={playerImage} alt="Shoes" />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">
