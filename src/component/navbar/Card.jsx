@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { FaFlag, FaUser } from "react-icons/fa";
+import { toast } from "react-toastify";
 
-const Card = ({ PlayersData, setCoin, coin, setSelectedPlayer, selectedPlayer }) => {
+const Card = ({
+  PlayersData,
+  setCoin,
+  coin,
+  setSelectedPlayer,
+  selectedPlayer,
+}) => {
   // console.log(PlayersData.price);
 
   const [isSelected, setisSelected] = useState([false]);
@@ -19,11 +26,13 @@ const Card = ({ PlayersData, setCoin, coin, setSelectedPlayer, selectedPlayer })
           if (newPrice >= 0) {
             setCoin(coin - player.price);
           } else {
-            alert("yon don't have engoht money");
+            // alert("yon don't have engoht money");
+            toast.error("yon don't have enoght money for buy this player");
             return;
           }
-          alert(`Player Name: ${player.playerName}`);
-          setSelectedPlayer([...selectedPlayer, player])
+          // alert(`Player Name: ${player.playerName}`);
+          toast.success(`${player.playerName} is added`);
+          setSelectedPlayer([...selectedPlayer, player]);
         };
         const {
           playerName,

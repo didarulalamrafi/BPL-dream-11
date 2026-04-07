@@ -18,8 +18,13 @@ const SelectedPlayers = ({
     setSeletctedPlayers(fliterPlayer);
     setCoin(coin + player.price);
   };
-  return seletctedPlayers.map((player, index) => {
-    return (
+  return seletctedPlayers.length === 0 ? (
+    <div className="mx-auto my-20 text-center">
+      <h2 className="text-3xl"> No Players Available </h2>
+      <p>Go to Available page and select Player</p>
+    </div>
+  ) : (
+    seletctedPlayers.map((player, index) => {
       <div
         className="mx-auto w-11/12 flex justify-between items-center border-2 rounded-md p-5 my-10"
         key={index}
@@ -41,9 +46,9 @@ const SelectedPlayers = ({
           {" "}
           <MdDelete></MdDelete>{" "}
         </button>
-      </div>
-    );
-  });
+      </div>;
+    })
+  );
 };
 
 export default SelectedPlayers;
