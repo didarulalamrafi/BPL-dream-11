@@ -6,7 +6,7 @@
     "rating": 95,
     "battingStyle": "Right-hand bat",
     "bowlingStyle": "Right-arm medium",
-    "price": 1500000,
+    "price": 10000,
     "playerImage": "https://i.ibb.co.com/ynchdf4S/OIP.webp"
   },
   {
@@ -46,7 +46,7 @@
     "rating": 91,
     "battingStyle": "Left-hand bat",
     "bowlingStyle": "Left-arm orthodox",
-    "price": 1350000,
+    "price": 1000,
     "playerImage": "https://i.ibb.co.com/ynchdf4S/OIP.webp"
   },
   {

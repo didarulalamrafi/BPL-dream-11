@@ -1,11 +1,29 @@
-import React, { useState } from 'react';
-import { FaFlag, FaUser } from "react-icons/fa"
+import React, { useState } from "react";
+import { FaFlag, FaUser } from "react-icons/fa";
 
-const Card = ({PlayersData}) => {
-    const [isSelected, setisSelected] = useState(false);
-    return (
-        <div className=" grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+const Card = ({ PlayersData, setCoin, coin }) => {
+  // console.log(PlayersData.price);
+
+  const [isSelected, setisSelected] = useState([false]);
+  const handleSelect = (index) => {
+    if (!isSelected.includes(index)) {
+      setisSelected([...isSelected, index]);
+    }
+  };
+  return (
+    <div className=" grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
       {PlayersData.map((player, index) => {
+        // console.log(player.price);
+        const coinHandler = () => {
+          let newPrice = coin - player.price;
+          if (newPrice >= 0) {
+            setCoin(coin - player.price);
+          } else {
+            alert("yon don't have engoht money");
+            return;
+          }
+          alert(`Player Name: ${player.playerName}`);
+        };
         const {
           playerName,
           playerCountry,
@@ -42,8 +60,15 @@ const Card = ({PlayersData}) => {
                 </div>
                 <div className="card-actions justify-end">
                   <p className="text-lg font-semibold">{price}</p>
-                  <button onClick={()=> setisSelected(true)} disabled={isSelected} className="btn btn-soft rounded-lg">
-                    {isSelected ? "disabled" : "Choose Player"}
+                  <button
+                    onClick={() => {
+                      coinHandler();
+                      handleSelect(index);
+                    }}
+                    disabled={isSelected.includes(index)}
+                    className="btn btn-soft rounded-lg"
+                  >
+                    {isSelected.includes(index) ? "disabled" : "Choose Player"}
                   </button>
                 </div>
               </div>
@@ -52,7 +77,7 @@ const Card = ({PlayersData}) => {
         );
       })}
     </div>
-    );
+  );
 };
 
 export default Card;
