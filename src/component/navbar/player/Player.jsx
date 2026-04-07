@@ -2,11 +2,11 @@ import React, { use, useState } from "react";
 import AvailablePlayers from "../AvailablePlayers";
 import SelectedPlayers from "../SelectedPlayers";
 
-const Player = ({ playerData, setCoin, coin, setSeletctedPlayers }) => {
+const Player = ({ playerData, setCoin, coin, setSeletctedPlayer }) => {
   const PlayersData = use(playerData);
   const [BtnStatus, setBtnStatus] = useState("Available");
   //   console.log(BtnStatus);
-  const [seletctedPlayers, setSelectedPlayer] =useState([]);
+  const [seletctedPlayers, setSeletctedPlayers] = useState([]);
   return (
     <div className="w-11/12 mx-auto my-5">
       <h2 className="text-4xl font-bold my-5">
@@ -17,7 +17,9 @@ const Player = ({ playerData, setCoin, coin, setSeletctedPlayers }) => {
         {BtnStatus === "Available" ? (
           <h3 className="text-3xl font-bold">Available Players</h3>
         ) : (
-          <h3 className="text-3xl font-bold">Selected Players {seletctedPlayers.length}/ {PlayersData.length}</h3>
+          <h3 className="text-3xl font-bold">
+            Selected Players {seletctedPlayers.length}/ {PlayersData.length}
+          </h3>
         )}
 
         <div className="flex gap-4">
@@ -40,11 +42,18 @@ const Player = ({ playerData, setCoin, coin, setSeletctedPlayers }) => {
           PlayersData={PlayersData}
           setCoin={setCoin}
           coin={coin}
-          setSelectedPlayer={setSelectedPlayer}
+          setSelectedPlayer={setSeletctedPlayers}
           selectedPlayer={seletctedPlayers}
         ></AvailablePlayers>
       ) : (
-        <SelectedPlayers seletctedPlayers={seletctedPlayers} setSeletctedPlayers={setSeletctedPlayers}> </SelectedPlayers>
+        <SelectedPlayers
+          seletctedPlayers={seletctedPlayers}
+          setSeletctedPlayers={setSeletctedPlayers}
+          setCoin={setCoin}
+          coin={coin}
+        >
+          {" "}
+        </SelectedPlayers>
       )}
     </div>
   );
